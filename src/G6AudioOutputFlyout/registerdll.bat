@@ -1,0 +1,1 @@
+regsvr32.exe "C:\Program Files (x86)\Creative\Sound Blaster Command\Platform\SndCrUSB.DLL"
