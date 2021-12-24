@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using ArtemisFlyout.Platform.Windows;
 using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Animation.Easings;
@@ -203,6 +204,11 @@ namespace G6AudioOutputFlyout.Screens.FlyoutContainer
             get => GetValue(VerticalPositionProperty);
             set
             {
+                if (PlatformImpl != null)
+                {
+                    NativeMethods.SetWindowRgn(PlatformImpl.Handle.Handle, NativeMethods.CreateRectRgn(0, 0, (int)Width, _screenHeight - value), true);
+                }
+
                 SetValue(VerticalPositionProperty, value);
                 Position = new PixelPoint(Position.X, value);
             }
