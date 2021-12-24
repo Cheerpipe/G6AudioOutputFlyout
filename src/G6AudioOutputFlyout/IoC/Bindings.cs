@@ -10,7 +10,7 @@ namespace G6AudioOutputFlyout.IoC
         public override void Load()
         {
             Bind<ITrayIconService>().To<WindowsTrayIconService>().InSingletonScope();
-            Bind<IFlyoutService>().To<FlyoutService>().InSingletonScope();
+            Bind<IFlyoutService>().To<WindowsFlyoutService>().InSingletonScope();
             Bind<ISBControllerService>().To<SBControllerService>().InSingletonScope();
         }
     }
