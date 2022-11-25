@@ -3,6 +3,7 @@ using System.Threading;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.ReactiveUI;
+using FluentAvalonia.Styling;
 using G6AudioOutputFlyout.IoC;
 using G6AudioOutputFlyout.SBOutputController;
 using G6AudioOutputFlyout.Screens.FlyoutContainer;
@@ -29,7 +30,7 @@ namespace G6AudioOutputFlyout
                 .With(new Win32PlatformOptions()
                 {
                     UseWindowsUIComposition = true,
-                    CompositionBackdropCornerRadius = 10f,
+                    CompositionBackdropCornerRadius = 15f,
                 });
             return builder;
         }
@@ -54,6 +55,9 @@ namespace G6AudioOutputFlyout
             {
                 return Kernel.Get<FlyoutContainerViewModel>();
             });
+
+            var thm = AvaloniaLocator.Current.GetService<FluentAvaloniaTheme>();
+            thm.RequestedTheme = "Dark";
 
             ITrayIconService trayIconService = Kernel.Get<ITrayIconService>();
             trayIconService.Show();
